@@ -1,25 +1,33 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Routes, Route as RRDRoute } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/components/Hero";
+import { DepthNavigator } from "@/components/DepthNavigator";
+import { Schedule } from "@/components/Schedule";
+import { Pricing } from "@/components/Pricing";
+import { Conservation } from "@/components/Conservation";
+import { Footer } from "@/components/Footer";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Routes>
-        <RRDRoute path="/" element={<Index />} />
-        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-        <RRDRoute path="*" element={<NotFound />} />
-      </Routes>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <div className="relative flex flex-col min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+          <Navbar />
+          <Hero />
+          <DepthNavigator />
+          <Schedule />
+          <Pricing />
+          <Conservation />
+          <Footer />
+        </div>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
 
 export default App;
