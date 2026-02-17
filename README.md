@@ -63,6 +63,32 @@ This project is built with:
 
 Simply open [Glyphor](https://fuse.glyphor.ai/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
 
+### Deploying to Vercel
+
+This project is configured for deployment to Vercel. To deploy:
+
+1. Install the Vercel CLI if you haven't already:
+   ```sh
+   npm i -g vercel
+   ```
+
+2. Link your local project to Vercel (first time only):
+   ```sh
+   vercel link
+   ```
+   Follow the prompts to connect to your Vercel account and select/create a project.
+
+3. Deploy to production:
+   ```sh
+   vercel --prod
+   ```
+
+The project includes a `vercel.json` configuration file that specifies:
+- Build command: `npm run build`
+- Output directory: `dist`
+- Framework: Vite
+- Routing: SPA rewrites for client-side routing
+
 ## Can I connect a custom domain to my Glyphor project?
 
 Yes, you can!
