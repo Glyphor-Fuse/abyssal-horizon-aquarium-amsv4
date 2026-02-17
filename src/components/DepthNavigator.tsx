@@ -1,7 +1,15 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
 
-const ZONES = [
+interface Zone {
+  name: string;
+  depth: string;
+  description: string;
+  image: string;
+  species: string[];
+}
+
+const ZONES: Zone[] = [
   {
     name: 'Sunlight Zone',
     depth: '0 - 200m',
@@ -67,7 +75,7 @@ export const DepthNavigator = () => {
   );
 };
 
-const ZoneLayer = ({ zone, index, progress }: { zone: any, index: number, progress: any }) => {
+const ZoneLayer = ({ zone, index, progress }: { zone: Zone, index: number, progress: MotionValue<number> }) => {
   const start = index / ZONES.length;
   const end = (index + 1) / ZONES.length;
   
